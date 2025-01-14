@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Votify</h1>
+        <!-- Poll Creation Section -->
+        <div id="admin-panel">
+            <h2>Create Poll</h2>
+            <input type="text" id="poll-question" placeholder="Enter question" />
+            <div id="poll-options">
+                <input type="text" class="poll-option" placeholder="Option 1" />
+                <input type="text" class="poll-option" placeholder="Option 2" />
+            </div>
+            <button id="add-option">Add Option</button>
+            <button id="create-poll">Create Poll</button>
+        </div>
+
+        <!-- Poll Display Section -->
+        <div id="poll-container">
+            <h2 id="poll-title">Poll Title</h2>
+            <div id="options-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
