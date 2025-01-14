@@ -1,0 +1,13 @@
+
+{
+  "name": "votify",
+  "version": "1.0.0",
+  "description": "Votify - An online polling system.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
