@@ -45,14 +45,14 @@ body {
 
 .card h2 {
     font-size: 1.2rem;
-    color: #333;
+    color: var(--secondary-text-color);
     margin: 1.5rem 0;
     line-height: 1.4;
 }
 
 /* Create Button */
 .card button:first-of-type {
-    background-color: rgba(0, 123, 255, 0.8); /* Transparent blue */
+    background-color: var(--secondary-button-color); /* Transparent blue */
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -72,7 +72,7 @@ body {
 
 /* Join Button */
 .card button:last-of-type {
-    background-color: rgba(255, 87, 34, 0.8); /* Transparent orange */
+    background-color:var(--primary-button-color); /* Transparent orange */
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -86,7 +86,7 @@ body {
 }
 
 .card button:last-of-type:hover {
-    background-color: rgba(255, 87, 34, 1); /* Opaque orange on hover */
+    background-color: rgb(246, 126, 89); /* Opaque orange on hover */
     opacity: 1;
 }
 

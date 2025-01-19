@@ -7,10 +7,29 @@
   <link rel="stylesheet" href="/votify/frontend/styles/navbar.css">
   <link rel="stylesheet" href="/votify/frontend/styles/footer.css">
   <link rel="stylesheet" href="/votify/frontend/styles/main.css">
+  <link rel="stylesheet" href="/votify/frontend/styles/sidebar.css">
+  <link rel="stylesheet" href="/votify/frontend/styles/theme.css"> <!-- Include the theme CSS file -->
 </head>
 <body>
   <!-- Navbar -->
   <div id="navbar"></div>
+
+  <!-- Sidebar (hidden by default) -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <nav>
+      <a href="/votify/frontend/home.html">Home</a>
+      <a href="#" onclick="showFooter()">Create</a>
+      <a href="#" onclick="showFooter()">Join</a>
+      <a href="#" onclick="showFooter()">Help</a>
+      <a href="#" onclick="showFooter()">Team</a>
+      <!-- Dark Mode Toggle for Smaller Screens -->
+      <label class="switch">
+        <input type="checkbox" id="toggle-dark-mode-sidebar">
+        <span class="slider round"></span>
+      </label>
+    </nav>
+  </div>
 
   <!-- Main Content -->
   <main id="main-content">
@@ -34,18 +53,37 @@
   <script src="/votify/frontend/script.js"></script>
   <script>
     // Dynamically load the navbar
-    document.getElementById('navbar').innerHTML = `
-      <header class="navbar">
-        <div class="logo">VOTIFY</div>
-        <nav>
-          <a href="/votify/frontend/home.html">Home</a>
-          <a href="#" onclick="showFooter()">Create</a>
-          <a href="#" onclick="showFooter()">Join</a>
-          <a href="#" onclick="showFooter()">Help</a>
-          <a href="#" onclick="showFooter()">Team</a>
-        </nav>
-      </header>
-    `;
+    fetch('/votify/frontend/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+
+        // Initialize dark mode toggle functionality after navbar is loaded
+        const toggleDarkMode = document.getElementById('toggle-dark-mode');
+        const toggleDarkModeSidebar = document.getElementById('toggle-dark-mode-sidebar');
+
+        const applyDarkMode = (isDark) => {
+          if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        };
+
+        toggleDarkMode.addEventListener('change', function() {
+          applyDarkMode(this.checked);
+          if (toggleDarkModeSidebar) {
+            toggleDarkModeSidebar.checked = this.checked; // Sync with sidebar toggle
+          }
+        });
+
+        if (toggleDarkModeSidebar) {
+          toggleDarkModeSidebar.addEventListener('change', function() {
+            applyDarkMode(this.checked);
+            toggleDarkMode.checked = this.checked; // Sync with navbar toggle
+          });
+        }
+      });
 
     // Dynamically load the footer
     fetch('/votify/frontend/footer.html')
@@ -53,6 +91,68 @@
       .then(data => {
         document.getElementById('footer').innerHTML = data;
       });
+
+    // Close sidebar when clicking outside of it
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('open') && !sidebar.contains(event.target) && !event.target.closest('.hamburger-menu button')) {
+        toggleSidebar();
+      }
+    });
+
+    function showFooter() {
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('footer').style.display = 'block';
+    }
+
+    function showPage(page) {
+      if (page === 'main') {
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('footer').style.display = 'block';
+      } else {
+        // Fallback for other pages
+        showFooter();
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        sidebar.classList.add('close');
+      } else {
+        sidebar.classList.remove('close');
+        sidebar.classList.add('open');
+      }
+    }
+
+    // Dark mode toggle functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleDarkMode = document.getElementById('toggle-dark-mode');
+      const toggleDarkModeSidebar = document.getElementById('toggle-dark-mode-sidebar');
+
+      const applyDarkMode = (isDark) => {
+        if (isDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      };
+
+      toggleDarkMode.addEventListener('change', function() {
+        applyDarkMode(this.checked);
+        if (toggleDarkModeSidebar) {
+          toggleDarkModeSidebar.checked = this.checked; // Sync with sidebar toggle
+        }
+      });
+
+      if (toggleDarkModeSidebar) {
+        toggleDarkModeSidebar.addEventListener('change', function() {
+          applyDarkMode(this.checked);
+          toggleDarkMode.checked = this.checked; // Sync with navbar toggle
+        });
+      }
+    });
   </script>
 </body>
 </html>
