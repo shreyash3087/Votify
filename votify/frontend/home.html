@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votify - Home</title>
+  <link rel="stylesheet" href="/styles/navbar.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <link rel="stylesheet" href="/styles/theme.css"> <!-- Include the theme CSS file -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/Votify_Logo.png">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Sidebar (hidden by default) -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <nav>
+      <a href="/home.html">Home</a>
+      <a href="#" onclick="showFooter()">Create</a>
+      <a href="#" onclick="showFooter()">Join</a>
+      <a href="#" onclick="showFooter()">Help</a>
+      <a href="#" onclick="showFooter()">Team</a>
+      <!-- Dark Mode Toggle for Smaller Screens -->
+      <label class="switch">
+        <input type="checkbox" id="toggle-dark-mode-sidebar">
+        <span class="slider round"></span>
+      </label>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <div class="section">
+      <div class="card">
+        <img src="/assets/create-poll.png" alt="Create Poll">
+        <h2>Easily create a poll for your event or competition. Share with participants, and get real-time results!</h2>
+        <button>Create a Poll</button>
+      </div>
+      <div class="card">
+        <img src="/assets/join-poll.png" alt="Join Poll">
+        <h2>Join an ongoing poll using a room link or ID. Participate in the event and see the results live!</h2>
+        <button>Join a Room</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script>
+    // Load navbar
+    fetch('/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+            // Initialize dark mode toggle only after navbar is loaded
+            initializeDarkMode();
+        });
+
+    // Load footer
+    fetch('/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+    function initializeDarkMode() {
+        const toggleDarkMode = document.getElementById('toggle-dark-mode');
+        const toggleDarkModeSidebar = document.getElementById('toggle-dark-mode-sidebar');
+        
+        if (toggleDarkMode) {
+            toggleDarkMode.addEventListener('change', function() {
+                applyDarkMode(this.checked);
+                if (toggleDarkModeSidebar) {
+                    toggleDarkModeSidebar.checked = this.checked;
+                }
+            });
+        }
+
+        if (toggleDarkModeSidebar) {
+            toggleDarkModeSidebar.addEventListener('change', function() {
+                applyDarkMode(this.checked);
+                if (toggleDarkMode) {
+                    toggleDarkMode.checked = this.checked;
+                }
+            });
+        }
+    }
+
+    function applyDarkMode(isDark) {
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    }
+
+    // Close sidebar when clicking outside of it
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('open') && !sidebar.contains(event.target) && !event.target.closest('.hamburger-menu button')) {
+        toggleSidebar();
+      }
+    });
+
+    function showFooter() {
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('footer').style.display = 'block';
+    }
+
+    function showPage(page) {
+      if (page === 'main') {
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('footer').style.display = 'block';
+      } else {
+        // Fallback for other pages
+        showFooter();
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        sidebar.classList.add('close');
+      } else {
+        sidebar.classList.remove('close');
+        sidebar.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
