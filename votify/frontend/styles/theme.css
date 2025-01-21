@@ -16,6 +16,7 @@
     --tertiary-text-color: #ffffffec;
     --slider-background: #ccc; /* Default toggle background in light mode */
     --slider-checked-background: #80c1e5; /* Toggle background when checked in light mode */
+    --divider-background: #48bfff3a;
   }
   
   /* Dark theme */  
@@ -34,6 +35,7 @@
     --primary-sidebar-color: #000d81ca; /* Transparent primary color for sidebar */
     --slider-background: #555; /* Default toggle background in dark mode */
     --slider-checked-background: #4baeff; /* Toggle background when checked in dark mode */
+    --divider-background: #100b5882;
   }
   
   /* Apply the colors to the entire document */
