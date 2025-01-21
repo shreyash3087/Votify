@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/sidebar.css">
-  <link rel="stylesheet" href="/styles/theme.css"> <!-- Include the theme CSS file -->
+  <link rel="stylesheet" href="/styles/theme.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/Votify_Logo.png">
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar will be dynamically loaded -->
   <div id="navbar"></div>
 
   <!-- Sidebar (hidden by default) -->
-  <div id="sidebar" class="sidebar">
+  <div id="sidebar" class="sidebar close">
     <button class="close-btn" onclick="toggleSidebar()">×</button>
     <nav>
       <a href="/home.html">Home</a>
@@ -48,90 +48,10 @@
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer will be dynamically loaded -->
   <div id="footer"></div>
 
-  <script>
-    // Load navbar
-    fetch('/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data;
-            // Initialize dark mode toggle only after navbar is loaded
-            initializeDarkMode();
-        });
-
-    // Load footer
-    fetch('/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
-
-    function initializeDarkMode() {
-        const toggleDarkMode = document.getElementById('toggle-dark-mode');
-        const toggleDarkModeSidebar = document.getElementById('toggle-dark-mode-sidebar');
-        
-        if (toggleDarkMode) {
-            toggleDarkMode.addEventListener('change', function() {
-                applyDarkMode(this.checked);
-                if (toggleDarkModeSidebar) {
-                    toggleDarkModeSidebar.checked = this.checked;
-                }
-            });
-        }
-
-        if (toggleDarkModeSidebar) {
-            toggleDarkModeSidebar.addEventListener('change', function() {
-                applyDarkMode(this.checked);
-                if (toggleDarkMode) {
-                    toggleDarkMode.checked = this.checked;
-                }
-            });
-        }
-    }
-
-    function applyDarkMode(isDark) {
-        if (isDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-        }
-    }
-
-    // Close sidebar when clicking outside of it
-    document.addEventListener('click', function(event) {
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar.classList.contains('open') && !sidebar.contains(event.target) && !event.target.closest('.hamburger-menu button')) {
-        toggleSidebar();
-      }
-    });
-
-    function showFooter() {
-      document.getElementById('main-content').style.display = 'none';
-      document.getElementById('footer').style.display = 'block';
-    }
-
-    function showPage(page) {
-      if (page === 'main') {
-        document.getElementById('main-content').style.display = 'block';
-        document.getElementById('footer').style.display = 'block';
-      } else {
-        // Fallback for other pages
-        showFooter();
-      }
-    }
-
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-        sidebar.classList.add('close');
-      } else {
-        sidebar.classList.remove('close');
-        sidebar.classList.add('open');
-      }
-    }
-  </script>
+  <!-- Reference the external script to handle all JS functionality -->
+  <script src="/script.js"></script>
 </body>
 </html>
