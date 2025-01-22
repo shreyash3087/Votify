@@ -20,6 +20,7 @@
   display: flex;
   gap: 1rem;
   margin-left: auto; /* Align navbar items to the right */
+  align-items: center; /* Add this to vertically align all items */
 }
 
 .navbar-nav a {
@@ -27,6 +28,9 @@
   text-transform: uppercase;
   font-size: 1rem;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 40px; /* Match height of theme switcher */
 }
 
 .navbar-nav a:hover {
@@ -47,51 +51,96 @@
   padding: 0.5rem 1rem;
 }
 
-/* Toggle Switch */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 20px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
+/* Remove old .switch, .slider styles and add new theme switcher styles */
+/* Modern Theme Switcher */
+.theme-switcher {
+  background: none;
+  border: none;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--slider-background); /* Use CSS variable */
-  transition: 0.4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 12px;
-  width: 12px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin-left */
+  position: relative;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background: #ffffff; /* White background for light mode */
+  overflow: hidden; /* Add this to contain the rotating icon */
 }
 
-input:checked + .slider {
-  background-color: var(--slider-checked-background); /* Use CSS variable */
+.theme-switcher i {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  position: absolute;
 }
 
-input:checked + .slider:before {
-  transform: translateX(14px);
+.theme-switcher i.fa-sun {
+  color: #fbaa47; /* Bright yellow sun */
+  text-shadow: 0 0 10px #FFD700,
+               0 0 20px #ffd900,
+               0 0 30px #FF8C00;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
+
+.theme-switcher i.fa-moon {
+  color: #ffffff; /* White moon */
+  text-shadow: 0 0 10px #ffffff,
+               0 0 20px #ffffff,
+               0 0 30px #4A4A4A;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-switcher:hover i.fa-sun {
+  color: #FDB813; /* Slightly darker gold on hover */
+  text-shadow: 0 0 15px #FFD700,
+               0 0 25px #FFD700,
+               0 0 35px #FF8C00;
+}
+
+.theme-switcher:hover {
+  transform: rotate(15deg);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switcher:active {
+  transform: scale(0.9);
+}
+
+[data-theme='dark'] .theme-switcher i {
+  transform: rotate(360deg);
+}
+
+[data-theme='dark'] .theme-switcher i.fa-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme='dark'] .theme-switcher i.fa-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme='dark'] .theme-switcher {
+  background: #333333; /* Dark background for dark mode */
+}
+
+[data-theme='dark'] .theme-switcher:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='dark'] .theme-switcher:hover i.fa-moon {
+  text-shadow: 0 0 15px #ffffff,
+               0 0 25px #ffffff,
+               0 0 35px #4A4A4A;
+}
+
 /* Responsive Design for Navbar */
 @media (max-width: 768px) {
   .navbar-nav {

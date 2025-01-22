@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Votify - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="/styles/navbar.css">
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/main.css">
@@ -15,7 +16,7 @@
   <!-- Navbar will be dynamically loaded -->
   <div id="navbar"></div>
 
-  <!-- Sidebar (hidden by default) -->
+  <!-- Updated Sidebar -->
   <div id="sidebar" class="sidebar close">
     <button class="close-btn" onclick="toggleSidebar()">×</button>
     <nav>
@@ -24,11 +25,10 @@
       <a href="./join.html" onclick="showFooter()">Join</a>
       <a href="#" onclick="showFooter()">Help</a>
       <a href="#" onclick="showFooter()">Team</a>
-      <!-- Dark Mode Toggle for Smaller Screens -->
-      <label class="switch">
-        <input type="checkbox" id="toggle-dark-mode-sidebar">
-        <span class="slider round"></span>
-      </label>
+      <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
     </nav>
   </div>
 

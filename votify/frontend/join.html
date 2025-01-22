@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Votify - Join</title>
   <!-- Include your CSS files as needed -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="/styles/navbar.css">
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/main.css">
@@ -18,7 +19,7 @@
   <!-- Navbar dynamically loaded via script.js -->
   <div id="navbar"></div>
 
-  <!-- Sidebar -->
+  <!-- Simplified Sidebar -->
   <div id="sidebar" class="sidebar close">
     <button class="close-btn" onclick="toggleSidebar()">×</button>
     <nav>
@@ -27,10 +28,6 @@
       <a href="./join.html">Join</a>
       <a href="#" onclick="showFooter()">Help</a>
       <a href="#" onclick="showFooter()">Team</a>
-      <label class="switch">
-        <input type="checkbox" id="toggle-dark-mode-sidebar">
-        <span class="slider round"></span>
-      </label>
     </nav>
   </div>
 

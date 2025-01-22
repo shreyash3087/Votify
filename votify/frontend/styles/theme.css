@@ -17,6 +17,9 @@
     --slider-background: #ccc; /* Default toggle background in light mode */
     --slider-checked-background: #80c1e5; /* Toggle background when checked in light mode */
     --divider-background: #48bfff3a;
+    --transition-duration: 0.3s; /* Add transition duration variable */
+    --transition-timing: ease;
+    --scale-factor: 1.02;
   }
   
   /* Dark theme */  
@@ -42,22 +45,71 @@
   body {
     background-color: var(--background-color);
     color: var(--text-color);
+    transition: all var(--transition-duration) var(--transition-timing);
+    min-height: 100vh;
   }
   
   a {
     color: var(--link-color);
+    transition: color var(--transition-duration) ease;
   }
   
   .navbar {
     background-color: var(--primary-color);
+    transition: all var(--transition-duration) var(--transition-timing);
+    position: relative;
+    z-index: 1000;
   }
   
   .sidebar {
     background-color: var(--primary-sidebar-color); /* Use transparent primary color */
+    transition: all var(--transition-duration) var(--transition-timing);
+    transform-origin: left;
   }
   
   .card {
     background-color: var(--card-background-color);
+    transition: all var(--transition-duration) var(--transition-timing);
+    transform-origin: center;
   }
   
-  /* Update other components' styles as needed using the defined variables */
+  .card:hover {
+    transform: scale(var(--scale-factor));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add transitions to any element that uses theme variables */
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: ease;
+  }
+
+  /* Theme switch animation */
+  [data-theme] {
+    animation: themeChange 0.3s ease-in-out;
+  }
+
+  @keyframes themeChange {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+  }
+
+  /* Smooth transition for all interactive elements */
+  button,
+  input,
+  select,
+  a {
+    transition: all var(--transition-duration) var(--transition-timing);
+  }
+
+  button:hover,
+  a:hover {
+    transform: translateY(-2px);
+  }
