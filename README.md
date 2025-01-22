@@ -7,7 +7,9 @@ Figma Link - https://www.figma.com/design/RlhrjSkortr6FLQDRyF68k/Votify?node-id=
 Guide for figma file:
 1. If you are working on any page, refers comments - if functionality added close the comment
 2. Make edits in your own figma file, exports are possible from my file
-3. More pages to be designed in future
+3. Pages designed - Team, Join, Create, Help - more coming
+4. Logo asseet added to file
+5. Use left side bar to change pages in file
 #AcWoC
 
 Key Features:
