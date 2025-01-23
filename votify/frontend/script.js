@@ -28,16 +28,26 @@ function toggleSidebar() {
   }
 }
 
-function applyDarkMode(isDark) {
+function updateThemeIcon(isDark) {
   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 }
 
-function syncDarkModeToggles(isDark) {
-  const toggleDarkMode = document.getElementById('toggle-dark-mode');
-  const toggleDarkModeSidebar = document.getElementById('toggle-dark-mode-sidebar');
-  if (toggleDarkMode) toggleDarkMode.checked = isDark;
-  if (toggleDarkModeSidebar) toggleDarkModeSidebar.checked = isDark;
+function initializeDarkMode() {
+  const navbarThemeButton = document.getElementById('theme-switcher');
+  const sidebarThemeButton = document.getElementById('theme-switcher-sidebar');
+  
+  const darkMode = localStorage.getItem('darkMode') === 'enabled';
+  updateThemeIcon(darkMode);
+
+  [navbarThemeButton, sidebarThemeButton].forEach(button => {
+    if (button) {
+      button.addEventListener('click', function() {
+        const isDark = localStorage.getItem('darkMode') !== 'enabled';
+        updateThemeIcon(isDark);
+      });
+    }
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -69,43 +79,16 @@ function loadDynamicPartials() {
   }
 }
 
-// ---------------------------------------------------------------------------
-// This function keeps the existing event listeners for toggles
-// ---------------------------------------------------------------------------
-function initializeDarkMode() {
-  const toggleDarkMode = document.getElementById('toggle-dark-mode');
-  const toggleDarkModeSidebar = document.getElementById('toggle-dark-mode-sidebar');
-
-  if (toggleDarkMode) {
-    toggleDarkMode.addEventListener('change', function () {
-      applyDarkMode(this.checked);
-      syncDarkModeToggles(this.checked);
-    });
-  }
-
-  if (toggleDarkModeSidebar) {
-    toggleDarkModeSidebar.addEventListener('change', function () {
-      applyDarkMode(this.checked);
-      syncDarkModeToggles(this.checked);
-    });
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Load the user's saved dark-mode preference
   const darkMode = localStorage.getItem('darkMode') === 'enabled';
-  applyDarkMode(darkMode);
-  syncDarkModeToggles(darkMode);
-
-  // Load navbar, footer, and attach event listeners after the DOM is ready
+  updateThemeIcon(darkMode);
   loadDynamicPartials();
 
   // Close sidebar when clicking outside of it
   const sidebar = document.getElementById('sidebar');
   document.addEventListener('click', function (event) {
-    if (sidebar &&
-        sidebar.classList.contains('open') &&
-        !sidebar.contains(event.target) &&
+    if (sidebar?.classList.contains('open') && 
+        !sidebar.contains(event.target) && 
         !event.target.closest('.hamburger-menu button')) {
       toggleSidebar();
     }
