@@ -1,0 +1,258 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color); /* Use theme variable */
+  color: var(--text-color); /* Use theme variable */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+}
+
+.team-page {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Title Section */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+#lottie-animation {
+  width: 200px; /* Increased width */
+  height: 200px; /* Increased height */
+}
+
+.title-text {
+  font-size: 2.5rem;
+  color: var(--text-color); /* Use theme variable */
+  font-weight: 700;
+  flex-grow: 1;
+  margin-left: 20px;
+  text-align: right;
+}
+
+/* Section Headings */
+.section-heading {
+  text-align: left;
+  font-size: 2rem;
+  color: var(--text-color); /* Use theme variable */
+  font-weight: 700;
+  margin: 40px 0 10px 0;
+}
+
+/* Centered Content */
+.team-maintainers,
+.team-contributors,
+.tech-stack,
+.team-footer {
+  text-align: center;
+}
+
+/* Section Styling */
+.team-maintainers,
+.team-contributors {
+  margin-bottom: 50px;
+  background: var(--card-background-color); /* Use theme variable */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color var(--transition-duration) var(--transition-timing);
+}
+
+.maintainers-container,
+.contributors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Team Member Card */
+.team-member {
+  background-color: var(--card-secondary-background-color);
+  border-radius: 12px;
+  padding: 20px;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-duration) var(--transition-timing), box-shadow var(--transition-duration) var(--transition-timing);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid var(--primary-color); /* Use theme variable */
+}
+
+.team-member p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary-text-color); /* Use theme variable */
+  margin: 0;
+}
+
+/* Divider */
+.divider {
+  border: 0;
+  height: 2px;
+  background: var(--divider-background); /* Use theme variable */
+  margin: 30px 0;
+}
+
+/* Tech Stack */
+.tech-stack h2 {
+  font-size: 1.8rem;
+  color: var(--text-color); /* Use theme variable */
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.stack-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Increased gap */
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.stack-icons img {
+  width: 100px; /* Further increased size */
+  height: 100px;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.tech-stack p {
+  font-size: 1rem;
+  color: var(--text-color); /* Use theme variable */
+}
+
+.tech-stack a {
+  color: var(--link-color); /* Use theme variable */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-duration) ease;
+}
+
+.tech-stack a:hover {
+  text-decoration: underline;
+}
+
+/* Logos Section */
+.logos-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--divider-background); /* Use theme variable */
+}
+
+.footer-logo {
+  width: 80px;
+  height: 60px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  color: var(--link-color); /* Use theme variable */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-duration) ease;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-github-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .title-text {
+    font-size: 2rem;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #lottie-animation, .title-text {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-text {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .team-member {
+    width: 140px;
+    padding: 15px;
+  }
+
+  .team-member img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .stack-icons img {
+    width: 70px;
+    height: 70px; /* Adjusted size for smaller screens */
+  }
+
+  .logos-section {
+    flex-direction: column;
+  }
+
+  .footer-link {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-text {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .team-member {
+    width: 120px;
+    padding: 10px;
+  }
+
+  .team-member img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .stack-icons img {
+    width: 60px;
+    height: 60px; /* Adjusted size for smaller screens */
+  }
+}
