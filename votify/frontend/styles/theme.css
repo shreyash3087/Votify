@@ -4,11 +4,12 @@
 :root {
     --background-color: #ffffff; /* Background color for light mode */
     --text-color: #000000; /* Text color for light mode */
-    --primary-color: #80C1E5; /* Primary color for light mode */
+    --primary-color: #90d8ffb3; /* Primary color for light mode */
     --primary-color-rgb: 128, 193, 229; /* RGB components of primary color for light mode */
     --secondary-color: #667279; /* Secondary color for light mode */
     --link-color: #054579; /* Link color for light mode */
     --card-background-color: #f8f9fa; /* Card background color for light mode */
+    --card-secondary-background-color: #e2f0f7; /* Card background color for light mode */
     --primary-button-color: #7bd79ed4;
     --secondary-button-color: #a3c2d2d6;
     --secondary-text-color: #3737379c;
@@ -26,9 +27,10 @@
   [data-theme="dark"] {
     --background-color: #121212; /* Background color for dark mode */
     --text-color: #ffffff; /* Text color for dark mode */
-    --primary-color: #000d81ca; /* Primary color for dark mode */
+    --primary-color: #0e144960; /* Primary color for dark mode */
     --primary-color-rgb: 187, 134, 252; /* RGB components of primary color for dark mode */
     --secondary-color: #31373a2e; /* Secondary color for dark mode */
+    --card-secondary-background-color: #222b30; /* Card background color for light mode */
     --link-color: #4baeff; /* Link color for dark mode */
     --card-background-color: #1f1f1f; /* Card background color for dark mode */
     --primary-button-color: #00833266;

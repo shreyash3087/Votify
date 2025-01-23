@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votify - Team</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/navbar.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <link rel="stylesheet" href="/styles/theme.css">
+  <link rel="stylesheet" href="/styles/team.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/Votify_Logo.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+</head>
+<body>
+  <!-- Navbar dynamically loaded via script.js -->
+  <div id="navbar"></div>
+
+  <!-- Updated Sidebar -->
+  <div id="sidebar" class="sidebar close">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <nav>
+      <a href="./home.html">Home</a>
+      <a href="#" onclick="showFooter()">Create</a>
+      <a href="./join.html">Join</a>
+      <a href="#" onclick="showFooter()">Help</a>
+      <a href="./team.html">Team</a>
+      <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="team-page">
+    <section class="team-section">
+      <div class="title-container">
+        <div id="lottie-animation"></div>
+        <div class="title-text">| Meet The Team</div>
+      </div>
+      <div class="section-heading">
+        <h2>Project Maintainers - AcWoC</h2>
+      </div>
+      <div class="team-maintainers">
+        <div class="maintainers-container">
+          <div class="team-member">
+            <img src="/assets/Somil2104.jpg" alt="Somil2104">
+            <p>Somil2104</p>
+          </div>
+          <div class="team-member">
+            <img src="/assets/shreyash3087.png" alt="Shreyash3087">
+            <p>Shreyash3087</p>
+          </div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="section-heading">
+        <h2>Contributors - AcWoC</h2>
+      </div>
+      <div class="team-contributors">
+        <div class="contributors-container">
+          <div class="team-member">
+            <img src="/assets/amaansyed27.png" alt="amaansyed27">
+            <p>amaansyed27</p>
+          </div>
+          <div class="team-member">
+            <img src="/assets/Harshit-Maurya838.jpg" alt="Harshit-Maurya838">
+            <p>Harshit-Maurya838</p>
+          </div>
+          <div class="team-member">
+            <img src="/assets/CoderYUI.png" alt="CoderYUI">
+            <p>CoderYUI</p>
+          </div>
+          <div class="team-member">
+            <img src="/assets/anumi1999.png" alt="anumi1999">
+            <p>anumi1999</p>
+          </div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="tech-stack">
+        <h2>Tech Stack</h2>
+        <div class="stack-icons">
+          <img src="/assets/html.png" alt="HTML">
+          <img src="/assets/css.png" alt="CSS">
+          <img src="/assets/js.png" alt="JavaScript">
+          <img src="/assets/node.png" alt="Node.js">
+          <img src="/assets/vercel.png" alt="Vercel">
+        </div>
+      </div>
+    </section>
+
+    <!-- Votify and GitHub Logos Section -->
+    <div class="logos-section">
+      <img src="/assets/Votify_Logo.png" alt="Votify Logo" class="footer-logo">
+      <a href="https://github.com/Somil2104/Votify" target="_blank" class="footer-link">
+        <svg class="footer-github-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40">
+          <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.022 8.022 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        Votify
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer dynamically loaded via script.js -->
+  <div id="footer"></div>
+
+  <!-- Main Script -->
+  <script src="/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/assets/TeamAnimation.json' // Update this line with the new file name
+      });
+    });
+  </script>
+</body>
+</html>
