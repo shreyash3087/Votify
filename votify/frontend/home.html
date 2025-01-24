@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
   <link rel="stylesheet" href="/styles/theme.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/Votify_Logo.png">
 </head>
+
 <body>
   <!-- Navbar will be dynamically loaded -->
   <div id="navbar"></div>
@@ -38,12 +40,12 @@
       <div class="card">
         <img src="/assets/create-poll.png" alt="Create Poll">
         <h2>Easily create a poll for your event or competition. Share with participants, and get real-time results!</h2>
-        <button>Create a Poll</button>
+        <button onclick="showFooter()">Create a Poll</button>
       </div>
       <div class="card">
         <img src="/assets/join-poll.png" alt="Join Poll">
         <h2>Join an ongoing poll using a room link or ID. Participate in the event and see the results live!</h2>
-        <button>Join a Room</button>
+        <a href="./join.html"><button>Join a Room</button></a>
       </div>
     </div>
   </main>
@@ -54,4 +56,5 @@
   <!-- Reference the external script to handle all JS functionality -->
   <script src="/script.js"></script>
 </body>
+
 </html>
