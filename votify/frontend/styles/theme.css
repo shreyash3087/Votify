@@ -30,7 +30,7 @@
     --primary-color: #0e144960; /* Primary color for dark mode */
     --primary-color-rgb: 187, 134, 252; /* RGB components of primary color for dark mode */
     --secondary-color: #31373a2e; /* Secondary color for dark mode */
-    --card-secondary-background-color: #222b30; /* Card background color for light mode */
+    --card-secondary-background-color: #333333; /* Card background color for light mode */
     --link-color: #4baeff; /* Link color for dark mode */
     --card-background-color: #1f1f1f; /* Card background color for dark mode */
     --primary-button-color: #00833266;
@@ -40,7 +40,7 @@
     --primary-sidebar-color: #000d81ca; /* Transparent primary color for sidebar */
     --slider-background: #555; /* Default toggle background in dark mode */
     --slider-checked-background: #4baeff; /* Toggle background when checked in dark mode */
-    --divider-background: #100b5882;
+    --divider-background: #93939372;
   }
   
   /* Apply the colors to the entire document */
