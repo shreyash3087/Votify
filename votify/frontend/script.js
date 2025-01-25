@@ -1,11 +1,4 @@
-function showFooter() {
-  const mainContent = document.getElementById('main-content');
-  const footer = document.getElementById('footer');
-  if (mainContent && footer) {
-    mainContent.style.display = 'none';
-    footer.style.display = 'block';
-  }
-}
+
 
 function showPage(page) {
   const mainContent = document.getElementById('main-content');
@@ -14,9 +7,7 @@ function showPage(page) {
     if (page === 'main') {
       mainContent.style.display = 'block';
       footer.style.display = 'block';
-    } else {
-      showFooter();
-    }
+    } 
   }
 }
 

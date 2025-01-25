@@ -67,7 +67,7 @@ main {
   gap: 1rem;
 }
 
-.footer-buttons button {
+.footer-buttons a {
   background-color: var(--secondary-button-color);
   color: var(--text-color);
   border: none;
@@ -78,10 +78,11 @@ main {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
 }
 
-.footer-buttons button:hover {
-  background-color: #0056b3;
+.footer-buttons a:hover {
+  background-color: var(--primary-button-color);
 }
 
 .footer-middle p:last-of-type {
