@@ -1,54 +1,143 @@
-Votify
-"Votify" is an easy-to-use online polling system designed for college events, competitions, and audience engagement. It allows event organizers to quickly create polls, where participants can vote on different options in real-time.
+# Votify
 
-Notes from Figma Designer
-@amaansyed27 - https://github.com/amaansyed27 Added Figma Link for 3 pages Home, Join, Create - Issue #2
-Figma Link - https://www.figma.com/design/RlhrjSkortr6FLQDRyF68k/Votify?node-id=0-1&t=QuPx6rbVaSGWdx2M-1
-Guide for figma file:
-1. If you are working on any page, refers comments - if functionality added close the comment
-2. Make edits in your own figma file, exports are possible from my file
-3. Pages designed - Team, Join, Create, Help - more coming
-4. Logo asseet added to file
-5. Use left side bar to change pages in file
-#AcWoC
+**"Engage. Vote. Decide — All in Real-Time!"**
 
-Key Features:
-- Instant Voting: Users can vote on polls quickly and easily through their phones or computers.
-- Real-Time Results: As soon as votes are cast, results update live, keeping the audience engaged throughout the event.
-- Simple Poll Creation: Organizers can create and manage polls with minimal effort.
-- Anti-Cheating Measures: Prevents multiple votes from the same user, ensuring fair results.
-- Mobile-Friendly: Designed to be accessible on any device, perfect for events where everyone is on the go.
+![Votify Banner](./Banner.png) <!-- Add your banner image here -->
 
-Building Requirements (MVP)
-Core Features
-1.	User Voting:
-2.	Allow users to vote once per poll.
-3.	Track votes via cookies or simple email sign-up.
-4.	Poll Creation:
-5.	Event organizers can create basic polls with a question and options.
-6.	Set a simple timer for each poll (e.g., 5 minutes).
-7.	Live Results:
-8.	Show results in real-time (use basic JavaScript to update results every few seconds).
-9.	Poll Management:
-10.	Simple admin dashboard to start and stop polls.
-11.	Anti-Cheating:
-12.	Limit one vote per user by using cookies or basic login.
-Tech Stack
-1.	Frontend:
-2.	HTML, CSS, and vanilla JavaScript (no need for frameworks like React).
-3.	Backend:
-4.	Node.js with Express for easy setup and real-time updates using WebSockets.
-5.	Database:
-6.	Use MongoDB (or even JSON files) to store poll data.
-7.	Real-Time Updates:
-8.	Use Socket.io for real-time voting results.
-9.	Authentication:
-10.	Keep it simple: use cookies or email-based login for tracking votes.
-Design
-1.	UI/UX:
-2.	Simple, clean design. Use Figma to create basic wireframes (Home page, Poll page, Results page).
-3.	Charts:
-4.	Use Chart.js for displaying poll results in real-time (bar or pie chart).
-5.	Animations:
-6.	Basic transitions like smooth result updates or voting confirmation.
+## Overview
 
+Votify is an easy-to-use online polling system designed for college events, competitions, and audience engagement. It empowers event organizers to create polls effortlessly, enabling participants to vote on various options in real-time.
+
+---
+
+## Key Features
+
+- **Instant Voting:** Users can cast their votes quickly via phones or computers.
+- **Real-Time Results:** Poll results are updated live as votes come in, keeping the experience engaging.
+- **Simple Poll Creation:** Organizers can create and manage polls seamlessly.
+- **Anti-Cheating Measures:** One vote per user through cookies or basic login ensures fairness.
+- **Mobile-Friendly:** Optimized for any device, ideal for on-the-go events.
+
+---
+
+## Building Requirements (MVP)
+
+### Core Features
+
+1. **User Voting:**
+   - Allow one vote per poll per user.
+   - Use cookies or email sign-up to track votes.
+
+2. **Poll Creation:**
+   - Enable organizers to set up polls with a question and multiple options.
+   - Add a timer (e.g., 5 minutes per poll).
+
+3. **Live Results:**
+   - Real-time result updates using JavaScript.
+
+4. **Poll Management:**
+   - Admin dashboard to start/stop polls.
+
+5. **Anti-Cheating:**
+   - Limit multiple votes through cookies or login.
+
+---
+
+## Tech Stack
+
+- **Frontend:**
+  - HTML, CSS, and vanilla JavaScript.
+- **Backend:**
+  - Node.js with Express for real-time updates using WebSockets.
+- **Database:**
+  - MongoDB or JSON files for storing poll data.
+- **Real-Time Updates:**
+  - Socket.io for live updates.
+- **Authentication:**
+  - Basic cookies or email-based login.
+
+---
+
+## Design
+
+- **UI/UX:**
+  - Clean and simple interface. Figma designs for core pages: Home, Poll, Results.
+- **Charts:**
+  - Display results using Chart.js (bar or pie charts).
+- **Animations:**
+  - Smooth transitions for voting and result updates.
+
+---
+
+## Installation and Setup
+
+Follow these steps to set up the project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Somil2104/Votify.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd Votify/votify
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the server:
+   ```bash
+   npm start
+   ```
+
+5. Access the application:
+   Open `http://localhost:3000` in your browser.
+
+---
+
+## Design
+
+Find the Figma design file here: [Votify Figma Designs](https://www.figma.com/design/RlhrjSkortr6FLQDRyF68k/Votify?node-id=0-1&t=QuPx6rbVaSGWdx2M-1)
+
+### Notes:
+- If working on a page, refer to comments in the Figma file.
+- Make edits in your own copy of the file.
+
+---
+
+## Contributing
+
+We welcome contributions to Votify! Please follow these steps to contribute:
+
+### How to Contribute
+
+1. Fork the repository and create a new branch for your changes.
+2. Make your changes and ensure your code is clean and follows the project's coding standards.
+3. Write clear and concise commit messages.
+4. Submit a pull request with a detailed description of your changes.
+
+### Reporting Issues
+
+If you find a bug or have a feature request, please open an issue in the [Issues](https://github.com/your-username/votify/issues) section. Include:
+- A clear description of the problem.
+- Steps to reproduce the issue (if applicable).
+- Any relevant screenshots or logs.
+
+### Code Standards
+
+- Follow [JavaScript Standard Style](https://standardjs.com/).
+- Write meaningful commit messages (e.g., "Fix typo in README").
+- Ensure all new features are tested before submitting.
+
+### Licensing
+
+By contributing to this project, you agree that your contributions will be licensed under the MIT License.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](./votify/LICENSE).
