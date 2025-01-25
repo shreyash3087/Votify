@@ -112,3 +112,50 @@ body {
         font-size: 0.9rem;
     }
 }
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s;
+}
+.card {
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.primary-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.primary-btn:hover {
+  transform: scale(1.05);
+}
+.primary-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+.primary-btn:active::after {
+  width: 200px;
+  height: 200px;
+}

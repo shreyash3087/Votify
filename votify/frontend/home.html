@@ -5,28 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Votify - Home</title>
+  <!-- Added animation library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js"></link>
+  <!-- Added custom Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/navbar.css">
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/sidebar.css">
   <link rel="stylesheet" href="/styles/theme.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/Votify_Logo.png">
+  <!-- Added preloader styles -->
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <img src="./assets/Votify_Logo.png" alt="Loading..." width="100">
+  </div>
+
   <!-- Navbar will be dynamically loaded -->
   <div id="navbar"></div>
 
-  <!-- Updated Sidebar -->
+  <!-- Updated Sidebar with smooth transitions -->
   <div id="sidebar" class="sidebar close">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <button class="close-btn animate__animated animate__fadeIn" onclick="toggleSidebar()">×</button>
     <nav>
-      <a href="./home.html">Home</a>
-      <a href="#" onclick="showFooter()">Create</a>
-      <a href="./join.html">Join</a>
-      <a href="#" onclick="showFooter()">Help</a>
-      <a href="./team.html">Team</a>
+      <a href="./home.html" class="animate__animated animate__fadeInLeft">Home</a>
+      <a href="./create-poll.html" class="animate__animated animate__fadeInLeft">Create</a>
+      <a href="./join.html" class="animate__animated animate__fadeInLeft">Join</a>
+      <a href="./help.html" class="animate__animated animate__fadeInLeft">Help</a>
+      <a href="./team.html" class="animate__animated animate__fadeInLeft">Team</a>
+      <div id="user-section">
+        <a href="./login.html" id="login-btn" class="animate__animated animate__fadeInLeft">Login</a>
+        <a href="./register.html" id="register-btn" class="animate__animated animate__fadeInLeft">Register</a>
+      </div>
       <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
         <i class="fas fa-sun" aria-hidden="true"></i>
         <i class="fas fa-moon" aria-hidden="true"></i>
@@ -34,27 +49,74 @@
     </nav>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Content with animations -->
   <main id="main-content">
-    <div class="section">
-      <div class="card">
+    <div class="section animate__animated animate__fadeIn">
+      <div class="card animate__animated animate__fadeInUp">
         <img src="/assets/create-poll.png" alt="Create Poll">
-        <h2>Easily create a poll for your event or competition. Share with participants, and get real-time results!</h2>
-        <button onclick="showFooter()">Create a Poll</button>
+        <h2>Create Interactive Polls</h2>
+        <p>Create engaging polls with customizable options:</p>
+        <ul>
+          <li><i class="fas fa-clock"></i> Set time limits for voting</li>
+          <li><i class="fas fa-sync-alt"></i> Real-time result updates</li>
+          <li><i class="fas fa-shield-alt"></i> Anti-cheat protection</li>
+          <li><i class="fas fa-share-alt"></i> Easy sharing options</li>
+        </ul>
+        <a href="./create-poll.html"><button class="primary-btn">Create a Poll</button></a>
       </div>
-      <div class="card">
+      <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
         <img src="/assets/join-poll.png" alt="Join Poll">
-        <h2>Join an ongoing poll using a room link or ID. Participate in the event and see the results live!</h2>
-        <a href="./join.html"><button>Join a Room</button></a>
+        <h2>Join and Vote</h2>
+        <p>Participate in live polls with these features:</p>
+        <ul>
+          <li><i class="fas fa-envelope"></i> Simple email verification</li>
+          <li><i class="fas fa-chart-bar"></i> Live result visualization</li>
+          <li><i class="fas fa-lock"></i> Secure voting system</li>
+          <li><i class="fas fa-mobile-alt"></i> Mobile-friendly interface</li>
+        </ul>
+        <a href="./join.html"><button class="primary-btn">Join a Room</button></a>
+      </div>
+      <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+        <img src="/assets/dashboard.png" alt="Dashboard">
+        <h2>Poll Dashboard</h2>
+        <p>Monitor your polls with ease:</p>
+        <ul>
+          <li><i class="fas fa-chart-line"></i> Real-time analytics</li>
+          <li><i class="fas fa-chart-pie"></i> Interactive charts</li>
+          <li><i class="fas fa-tasks"></i> Vote management</li>
+          <li><i class="fas fa-file-export"></i> Export results</li>
+        </ul>
+        <a href="./dashboard.html"><button class="primary-btn">View Dashboard</button></a>
       </div>
     </div>
   </main>
 
-  <!-- Footer will be dynamically loaded -->
-  <div id="footer"></div>
-
-  <!-- Reference the external script to handle all JS functionality -->
+  <!-- Scripts -->
+  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+  <script src="/socket-client.js"></script>
+  <script src="/auth.js"></script>
   <script src="/script.js"></script>
+  <!-- Added smooth scroll behavior -->
+  <script>
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.querySelector('.preloader');
+      preloader.style.opacity = '0';
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
