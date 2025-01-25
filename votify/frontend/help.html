@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votify - Help</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/navbar.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <link rel="stylesheet" href="/styles/theme.css">
+  <link rel="stylesheet" href="/styles/help.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/Votify_Logo.png">
+</head>
+
+<body>
+  <!-- Navbar will be dynamically loaded -->
+  <div id="navbar"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar close">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <nav>
+      <a href="./home.html">Home</a>
+      <a href="#" onclick="showFooter()">Create</a>
+      <a href="./join.html">Join</a>
+      <a href="./help.html">Help</a>
+      <a href="./team.html">Team</a>
+      <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <section class="faq-container">
+      <h1>What is Votify?</h1>
+      <div class="faq">
+        <div class="faq-questions">
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>What is Votify?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>Is my vote anonymous on Votify?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>How do I create a poll?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>How do I join a poll?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>How many times can I vote in a poll?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>What happens if I refresh or close the browser?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>Are my poll responses stored?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>Can I see the results of the poll in real-time?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>How can I ensure the poll remains secure?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="faq-question" onclick="showAnswer(this)">
+            <span>Is there a limit to how many people can vote in a poll?</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="faq-answer">
+          <h2>Question</h2>
+          <p>Scrollable answer</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer will be dynamically loaded -->
+  <div id="footer"></div>
+
+  <script src="/script.js"></script>
+</body>
+
+</html>
