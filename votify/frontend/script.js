@@ -1,5 +1,3 @@
-
-
 function showPage(page) {
   const mainContent = document.getElementById('main-content');
   const footer = document.getElementById('footer');
