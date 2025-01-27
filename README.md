@@ -69,6 +69,15 @@ Votify is an easy-to-use online polling system designed for college events, comp
 
 ---
 
+## Pages Designed
+- Home
+- Create
+- Join
+- Logo
+- Admin Console
+- User Questions Look
+- User Response Record
+
 ## Installation and Setup
 
 Follow these steps to set up the project locally:
