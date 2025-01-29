@@ -40,10 +40,7 @@
   <!-- Main Content -->
   <main class="container">
     <div class="questions_sidebar">
-      <p>Q1 - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, est?</p>
-      <p>Q1 - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, est?</p>
-      <p>Q1 - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, est?</p>
-      <button>+</button>
+      <p>Loading polls...</p>
     </div>
     <div class="question_container">
       <div class="input-group">
@@ -72,6 +69,178 @@
 
   <!-- Footer dynamically loaded via script.js -->
   <div id="footer"></div>
+  <script>
+    function addOptionFields() {
+      let optionsContainer = document.getElementById("optionsContainer");
+      optionsContainer.innerHTML = ""; // Clear previous options
+
+      let numberOfOptions = parseInt(document.getElementById("option").value);
+      if (isNaN(numberOfOptions) || numberOfOptions <= 0) {
+        alert("Please enter a valid number of options.");
+        return;
+      }
+
+      let answerType = document.querySelector('input[name="answer-type"]:checked').value;
+
+      for (let i = 1; i <= numberOfOptions; i++) {
+        let optionWrapper = document.createElement("div");
+        optionWrapper.className = "option-wrapper";
+
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Option " + i;
+        input.className = "option-field";
+
+        let selector;
+        if (answerType === "single") {
+          selector = document.createElement("input");
+          selector.type = "radio";
+          selector.name = "correct-answer"; // Only one correct for single type
+        } else {
+          selector = document.createElement("input");
+          selector.type = "checkbox"; // Multiple correct answers for multiple type
+        }
+        selector.className = "correct-selector";
+
+        optionWrapper.appendChild(input);
+        optionWrapper.appendChild(selector);
+        optionsContainer.appendChild(optionWrapper);
+      }
+    }
+
+
+    function savePoll() {
+      let title = document.getElementById("title").value;
+      let question = document.getElementById("question").value;
+      let answerType = document.querySelector('input[name="answer-type"]:checked').value;
+
+      let optionFields = document.querySelectorAll(".option-field");
+      let selectors = document.querySelectorAll(".correct-selector");
+
+      let options = [];
+      let correctAnswers = [];
+
+      optionFields.forEach((input, index) => {
+        let optionText = input.value.trim();
+        if (optionText !== "") {
+          options.push(optionText);
+          if (selectors[index].checked) {
+            correctAnswers.push(optionText);
+          }
+        }
+      });
+
+      if (!title || !question || options.length === 0) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      let pollData = { title, question, answerType, options, correctAnswers };
+
+      fetch("http://localhost:3000/savePoll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pollData)
+      }).then(response => response.json())
+        .then(() => renderSidebar());
+    }
+
+
+    function renderSidebar() {
+      let sidebar = document.querySelector(".questions_sidebar");
+
+      if (!sidebar) {
+        console.error("Sidebar element not found!");
+        return;
+      }
+
+      fetch("http://localhost:3000/getPolls")
+        .then(response => response.json())
+        .then(polls => {
+          sidebar.innerHTML = "<div>Saved Questions:</div>"; // Reset content
+          polls.forEach((poll, index) => {
+            let p = document.createElement("p");
+            p.innerText = `Q${index + 1}: ${poll.question}`;
+            p.classList.add("poll-item");
+            p.addEventListener("click", () => previewPoll(poll));
+            sidebar.appendChild(p);
+          });
+        })
+        .catch(error => console.error("Error fetching polls:", error));
+    }
+
+    function previewPoll(poll) {
+      let questionContainer = document.querySelector(".question_container");
+
+      if (!questionContainer) {
+        console.error("Question container not found!");
+        return;
+      }
+
+      questionContainer.innerHTML = `
+        <div class="poll-preview">
+            <h2>${poll.title}</h2>
+            <p class="poll-question"><strong>Question:</strong> ${poll.question}</p>
+            <p><strong>Answer Type:</strong> ${poll.answerType === "single" ? "Single Correct" : "Multiple Correct"}</p>
+            <div class="poll-options">
+                <span><strong>Options:</strong></span>
+                <ul>
+                    ${poll.options.map(option => `
+                        <li class="${poll.correctAnswers.includes(option) ? 'correct-answer' : ''}">
+                            ${option}
+                        </li>`).join("")}
+                </ul>
+            </div>
+            <button class="back-to-create" onclick="showCreateForm()">+ Add New Question</button>
+        </div>
+    `;
+    }
+
+
+    function showCreateForm() {
+      let questionContainer = document.querySelector(".question_container");
+
+      if (!questionContainer) {
+        console.error("Question container not found!");
+        return;
+      }
+
+      questionContainer.innerHTML = `
+        <div class="input-group">
+            <label for="title">Enter A Title for your poll</label>
+            <input type="text" id="title" placeholder="Title">
+        </div>
+        <hr />
+        <div class="input-group">
+            <label for="question">Enter your Question</label>
+            <input type="text" id="question" placeholder="Question">
+        </div>
+        <div class="answer-type">
+            <span>Select Answer Type</span>
+            <input type="radio" id="single" name="answer-type" value="single" checked onclick="updateOptionSelection()"> 
+            <label for="single">Single</label>
+            <input type="radio" id="multiple" name="answer-type" value="multiple" onclick="updateOptionSelection()"> 
+            <label for="multiple">Multiple</label>
+        </div>
+        <div class="input-group">
+            <label for="option">Add Options</label>
+            <input type="number" id="option" placeholder="Enter number of options">
+        </div>
+        <button class="add-option" onclick="addOptionFields()">Add Options +</button>
+        <div class="options-container" id="optionsContainer"></div>
+        <button class="save-poll" onclick="savePoll()">Save Poll</button>
+    `;
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded.");
+      renderSidebar();
+    });
+
+    document.addEventListener("DOMContentLoaded", renderSidebar);
+  </script>
 
   <!-- Main Script -->
   <script src="/script.js"></script>
