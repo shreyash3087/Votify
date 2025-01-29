@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Votify - Join</title>
+  <!-- Include your CSS files as needed -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/navbar.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <link rel="stylesheet" href="/styles/theme.css">
+  <link rel="stylesheet" href="/styles/create.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/Votify_Logo.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+</head>
+
+<body>
+  <!-- Navbar dynamically loaded via script.js -->
+  <div id="navbar"></div>
+
+  <!-- Updated Sidebar -->
+  <div id="sidebar" class="sidebar close">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <nav>
+      <a href="./home.html">Home</a>
+      <a href="./create.html">Create</a>
+      <a href="./join.html">Join</a>
+      <a href="#" onclick="showFooter()">Help</a>
+      <a href="./team.html">Team</a>
+      <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="questions_sidebar">
+      <p>Q1 - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, est?</p>
+      <p>Q1 - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, est?</p>
+      <p>Q1 - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, est?</p>
+      <button>+</button>
+    </div>
+    <div class="question_container">
+      <div class="input-group">
+        <label for="title">Enter A Title for your poll</label>
+        <input type="text" id="title" placeholder="Title">
+      </div>
+      <hr />
+      <div class="input-group">
+        <label for="question">Enter your Question</label>
+        <input type="text" id="question" placeholder="Question">
+      </div>
+      <div class="answer-type">
+        <span>Select Answer Type</span>
+        <input type="radio" id="single" name="answer-type"> <label for="single">Single</label>
+        <input type="radio" id="multiple" name="answer-type"> <label for="multiple">Multiple</label>
+      </div>
+      <div class="input-group">
+        <label for="option">Add Options</label>
+        <input type="number" id="option" placeholder="Enter number of options">
+      </div>
+      <button class="add-option" onclick="addOptionFields()">Add An Option +</button>
+      <div class="options-container" id="optionsContainer"></div>
+      <button class="save-poll" onclick="savePoll()">Save Poll</button>
+    </div>
+  </main>
+
+  <!-- Footer dynamically loaded via script.js -->
+  <div id="footer"></div>
+
+  <!-- Main Script -->
+  <script src="/script.js"></script>
+</body>
+
+</html>
