@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votify - Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/sidebar.css">
+    <link rel="stylesheet" href="/styles/theme.css">
+    <!-- New analytics specific CSS file -->
+    <link rel="stylesheet" href="/styles/analytics.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/Votify_Logo.png">
+    <!-- Chart.js is already included in the project -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar dynamically loaded -->
+    <div id="navbar"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar close">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <nav>
+            <a href="./home.html">Home</a>
+            <a href="./create.html">Create</a>
+            <a href="./join.html">Join</a>
+            <a href="./help.html">Help</a>
+            <a href="./team.html">Team</a>
+            <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="analytics-container">
+        <div class="stats-cards">
+            <div class="stat-card">
+                <i class="fas fa-poll"></i>
+                <h3>Total Votes</h3>
+                <p id="totalVotes">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <h3>Poll Duration</h3>
+                <p id="pollDuration">0 minutes</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <h3>Participants</h3>
+                <p id="totalParticipants">0</p>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3>Vote Distribution</h3>
+                <canvas id="voteDistribution"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>Votes Timeline</h3>
+                <canvas id="votesTimeline"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer dynamically loaded -->
+    <div id="footer"></div>
+
+    <!-- Analytics Script -->
+    <script>
+        function initializeCharts() {
+            // Vote Distribution Chart
+            const distributionCtx = document.getElementById('voteDistribution').getContext('2d');
+            new Chart(distributionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Option 1', 'Option 2', 'Option 3'],
+                    datasets: [{
+                        label: 'Votes',
+                        data: [12, 19, 3],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(255, 99, 132, 0.5)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Votes Timeline Chart
+            const timelineCtx = document.getElementById('votesTimeline').getContext('2d');
+            new Chart(timelineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Start', '5min', '10min', '15min', '20min'],
+                    datasets: [{
+                        label: 'Votes over time',
+                        data: [0, 5, 10, 15, 20],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDynamicPartials();
+            initializeCharts();
+        });
+    </script>
+    <script src="/script.js"></script>
+</body>
+
+</html>
