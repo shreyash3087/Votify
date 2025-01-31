@@ -2,17 +2,254 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Votify - Team</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/navbar.css">
   <link rel="stylesheet" href="/styles/navbar.css">
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/sidebar.css">
   <link rel="stylesheet" href="/styles/theme.css">
-  <link rel="stylesheet" href="/styles/team.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/Votify_Logo.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votify - Meet Our Amazing Team</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #f39c12;
+      --accent-color: #e74c3c;
+      --background-light: #f5f6fa;
+      --text-dark: #2c3e50;
+      --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--background-light);
+    }
+
+    .team-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .title-container {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title-text {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .team-section {
+      margin: 4rem 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+      color: var(--text-dark);
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      border-radius: 50px;
+      background: white;
+      box-shadow: var(--card-shadow);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .team-member {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+    }
+
+    .team-member::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+      border-radius: 20px;
+    }
+
+    .team-member:hover::before {
+      opacity: 0.1;
+    }
+
+    .member-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      position: relative;
+      z-index: 2;
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover .member-image {
+      transform: scale(1.1);
+    }
+
+    .member-name {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: var(--text-dark);
+      position: relative;
+      z-index: 2;
+    }
+
+    .member-role {
+      color: var(--primary-color);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .member-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 1rem 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .skill-tag {
+      background: var(--background-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-link {
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    .tech-stack {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 4rem;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+    }
+
+    .tech-stack h2 {
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+    }
+
+    .stack-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-icon {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tech-icon:hover {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: white;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @media (max-width: 768px) {
+      .title-text {
+        font-size: 2rem;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar dynamically loaded via script.js -->
@@ -34,92 +271,173 @@
       </button>
     </nav>
   </div>
-
-  <!-- Main Content -->
   <main class="team-page">
-    <section class="team-section">
-      <div class="title-container">
-        <div id="lottie-animation"></div>
-        <div class="title-text">| Meet The Team</div>
-      </div>
+    <div id="navbar"></div>
+    <div class="title-container animate__animated animate__fadeIn">
+      <div class="title-text">Meet Our Amazing Team</div>
+      <p class="subtitle">The passionate individuals behind Votify working together to create something extraordinary</p>
+    </div>
+
+    <section class="team-section animate__animated animate__fadeInUp">
       <div class="section-heading">
-        <h2>Project Maintainers - AcWoC</h2>
+        <h2>Project Maintainers</h2>
       </div>
-      <div class="team-maintainers">
-        <div class="maintainers-container">
-          <div class="team-member">
-            <img src="/assets/Somil2104.jpg" alt="Somil2104">
-            <p>Somil2104</p>
-          </div>
-          <div class="team-member">
-            <img src="/assets/shreyash3087.png" alt="Shreyash3087">
-            <p>Shreyash3087</p>
-          </div>
-        </div>
-      </div>
-      <hr class="divider">
-      <div class="section-heading">
-        <h2>Contributors - AcWoC</h2>
-      </div>
-      <div class="team-contributors">
-        <div class="contributors-container">
-          <div class="team-member">
-            <img src="/assets/amaansyed27.png" alt="amaansyed27">
-            <p>amaansyed27</p>
-          </div>
-          <div class="team-member">
-            <img src="/assets/Harshit-Maurya838.jpg" alt="Harshit-Maurya838">
-            <p>Harshit-Maurya838</p>
-          </div>
-          <div class="team-member">
-            <img src="/assets/CoderYUI.png" alt="CoderYUI">
-            <p>CoderYUI</p>
-          </div>
-          <div class="team-member">
-            <img src="/assets/anumi1999.png" alt="anumi1999">
-            <p>anumi1999</p>
-          </div>
-        </div>
-      </div>
-      <hr class="divider">
-      <div class="tech-stack">
-        <h2>Tech Stack</h2>
-        <div class="stack-icons">
-          <img src="/assets/html.png" alt="HTML">
-          <img src="/assets/css.png" alt="CSS">
-          <img src="/assets/js.png" alt="JavaScript">
-          <img src="/assets/node.png" alt="Node.js">
-          <img src="/assets/vercel.png" alt="Vercel">
-        </div>
+      <div class="team-grid" id="maintainers-grid">
       </div>
     </section>
 
-    <!-- Votify and GitHub Logos Section -->
-    <div class="logos-section">
-      <img src="/assets/Votify_Logo.png" alt="Votify Logo" class="footer-logo">
-      <a href="https://github.com/Somil2104/Votify" target="_blank" class="footer-link">
-        <svg class="footer-github-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="40" height="40">
-          <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.022 8.022 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        Votify
-      </a>
-    </div>
+    <section class="team-section animate__animated animate__fadeInUp">
+      <div class="section-heading">
+        <h2>Contributors</h2>
+      </div>
+      <div class="team-grid" id="contributors-grid">
+      </div>
+    </section>
+
+    <section class="tech-stack animate__animated animate__fadeInUp">
+      <h2>Our Tech Stack</h2>
+      <div class="stack-icons">
+        <img src="/assets/html.png" alt="HTML" class="tech-icon floating" data-tech="HTML5">
+        <img src="/assets/css.png" alt="CSS" class="tech-icon floating" data-tech="CSS3">
+        <img src="/assets/js.png" alt="JavaScript" class="tech-icon floating" data-tech="JavaScript">
+        <img src="/assets/node.png" alt="Node.js" class="tech-icon floating" data-tech="Node.js">
+        <img src="/assets/vercel.png" alt="Vercel" class="tech-icon floating" data-tech="Vercel">
+      </div>
+    </section>
   </main>
 
-  <!-- Footer dynamically loaded via script.js -->
   <div id="footer"></div>
-
-  <!-- Main Script -->
+  <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+  <script src="/socket-client.js"></script>
+  <script src="/auth.js"></script>
   <script src="/script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var animation = lottie.loadAnimation({
-        container: document.getElementById('lottie-animation'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: '/assets/TeamAnimation.json' // Update this line with the new file name
+    const maintainers = [
+      {
+        name: 'Somil2104',
+        role: 'Lead Developer',
+        image: '/assets/Somil2104.jpg',
+        skills: ['Frontend', 'Backend', 'DevOps'],
+        github: 'https://github.com/Somil2104',
+        linkedin: '#',
+        twitter: '#'
+      },
+      {
+        name: 'Shreyash3087',
+        role: 'Technical Lead',
+        image: '/assets/shreyash3087.png',
+        skills: ['Architecture', 'System Design', 'Backend'],
+        github: '#',
+        linkedin: '#',
+        twitter: '#'
+      }
+    ];
+
+    const contributors = [
+      {
+        name: 'amaansyed27',
+        role: 'Frontend Developer',
+        image: '/assets/amaansyed27.png',
+        skills: ['React', 'UI/UX', 'JavaScript'],
+        github: '#'
+      },
+      {
+        name: 'Harshit-Maurya838',
+        role: 'Backend Developer',
+        image: '/assets/Harshit-Maurya838.jpg',
+        skills: ['Node.js', 'Database', 'API'],
+        github: '#'
+      },
+      {
+        name: 'CoderYUI',
+        role: 'Full Stack Developer',
+        image: '/assets/CoderYUI.png',
+        skills: ['Frontend', 'Backend', 'Testing'],
+        github: '#'
+      },
+      {
+        name: 'anumi1999',
+        role: 'UI Developer',
+        image: '/assets/anumi1999.png',
+        skills: ['Design', 'Frontend', 'Animation'],
+        github: '#'
+      }
+    ];
+
+    function createTeamMemberCard(member) {
+      return `
+        <div class="team-member">
+          <img src="${member.image}" alt="${member.name}" class="member-image">
+          <h3 class="member-name">${member.name}</h3>
+          <p class="member-role">${member.role}</p>
+          <div class="member-skills">
+            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+          </div>
+          <div class="social-links">
+            ${member.github ? `<a href="${member.github}" class="social-link" target="_blank"><i class="fab fa-github"></i></a>` : ''}
+            ${member.linkedin ? `<a href="${member.linkedin}" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>` : ''}
+            ${member.twitter ? `<a href="${member.twitter}" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById('maintainers-grid').innerHTML = maintainers.map(createTeamMemberCard).join('');
+    document.getElementById('contributors-grid').innerHTML = contributors.map(createTeamMemberCard).join('');
+
+    function createSparkle(e) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = e.pageX + 'px';
+      sparkle.style.top = e.pageY + 'px';
+      document.body.appendChild(sparkle);
+
+      sparkle.style.animation = 'sparkle-fade 0.5s ease-in-out forwards';
+      setTimeout(() => sparkle.remove(), 500);
+    }
+
+    document.querySelectorAll('.team-member').forEach(card => {
+      card.addEventListener('mousemove', createSparkle);
+    });
+
+    document.querySelectorAll('.tech-icon').forEach(icon => {
+      icon.addEventListener('mouseenter', function(e) {
+        const tech = this.getAttribute('data-tech');
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.style.position = 'absolute';
+        tooltip.style.background = 'rgba(0,0,0,0.8)';
+        tooltip.style.color = 'white';
+        tooltip.style.padding = '5px 10px';
+        tooltip.style.borderRadius = '5px';
+        tooltip.style.fontSize = '14px';
+        tooltip.style.zIndex = '1000';
+        tooltip.textContent = tech;
+        
+        const rect = this.getBoundingClientRect();
+        tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+        tooltip.style.top = rect.top - 30 + 'px';
+        
+        document.body.appendChild(tooltip);
+        
+        this.addEventListener('mouseleave', () => tooltip.remove());
       });
+    });
+
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.team-section, .tech-stack').forEach(section => {
+      observer.observe(section);
     });
   </script>
 </body>
