@@ -150,3 +150,4 @@ By contributing to this project, you agree that your contributions will be licen
 ## License
 
 This project is licensed under the [MIT License](./votify/LICENSE).
+.
