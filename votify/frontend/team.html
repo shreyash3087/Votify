@@ -252,8 +252,25 @@
   </style>
 </head>
 <body>
-  
+  <!-- Navbar dynamically loaded via script.js -->
+  <div id="navbar"></div>
 
+  <!-- Updated Sidebar -->
+  <div id="sidebar" class="sidebar close">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <nav>
+      <a href="./home.html">Home</a>
+      <a href="#" onclick="showFooter()">Create</a>
+      <a href="./join.html">Join</a>
+      <a href="#" onclick="showFooter()">Help</a>
+      <a href="./team.html">Team</a>
+      <a href="./analytics.html">Analytics</a>
+      <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
   <main class="team-page">
     <div id="navbar"></div>
     <div class="title-container animate__animated animate__fadeIn">
