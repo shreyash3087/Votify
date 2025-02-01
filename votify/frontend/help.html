@@ -1,100 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Votify - Help</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="/styles/navbar.css">
-  <link rel="stylesheet" href="/styles/footer.css">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/sidebar.css">
-  <link rel="stylesheet" href="/styles/theme.css">
-  <link rel="stylesheet" href="/styles/help.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/Votify_Logo.png">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votify - Help Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/sidebar.css">
+    <link rel="stylesheet" href="/styles/theme.css">
+    <style>
+      :root {
+          --primary-color: #4a90e2;
+          --secondary-color: #f39c12;
+          --accent-color: #e74c3c;
+          --background-light: #f5f6fa;
+          --text-dark: #2c3e50;
+          --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
 
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+          background: var(--background-light);
+          color: var(--text-dark);
+          line-height: 1.6;
+          min-height: 100vh;
+      }
+
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+
+      .header {
+          text-align: center;
+          padding: 3rem 0;
+          margin-bottom: 2rem;
+      }
+
+      .header h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 800;
+      }
+
+      .header p {
+          font-size: 1.2rem;
+          color: var(--text-dark);
+      }
+
+      .quick-links {
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          margin: 2rem 0;
+          flex-wrap: wrap;
+      }
+
+      .quick-link {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          padding: 1rem 2rem;
+          background: white;
+          border-radius: 20px;
+          box-shadow: var(--card-shadow);
+          transition: all 0.3s ease;
+          text-decoration: none;
+          color: var(--text-dark);
+          font-weight: 500;
+      }
+
+      .quick-link:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      }
+
+      .search-container {
+          max-width: 700px;
+          margin: 3rem auto;
+          position: relative;
+      }
+
+      .search-input {
+          width: 100%;
+          padding: 1.2rem 1.5rem 1.2rem 4rem;
+          border: none;
+          border-radius: 20px;
+          background: white;
+          box-shadow: var(--card-shadow);
+          font-size: 1.1rem;
+          transition: all 0.3s ease;
+      }
+
+      .search-input:focus {
+          outline: none;
+          box-shadow: 0 15px 30px rgba(74, 144, 226, 0.2);
+          transform: translateY(-2px);
+      }
+
+      .search-icon {
+          position: absolute;
+          left: 1.5rem;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--primary-color);
+          font-size: 1.2rem;
+      }
+
+      .categories {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin: 2rem 0;
+          flex-wrap: wrap;
+      }
+
+      .category {
+          padding: 0.8rem 2rem;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          background: white;
+          border: none;
+          font-weight: 500;
+          box-shadow: var(--card-shadow);
+      }
+
+      .category.active {
+          background: var(--primary-color);
+          color: white;
+          transform: scale(1.05);
+      }
+
+      .category:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      }
+
+      .faq-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2rem;
+          margin: 3rem 0;
+      }
+
+      .faq-card {
+          background: white;
+          border-radius: 20px;
+          padding: 2rem;
+          box-shadow: var(--card-shadow);
+          transition: all 0.4s ease;
+          cursor: pointer;
+      }
+
+      .faq-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      }
+
+      .faq-question {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+      }
+
+      .faq-icon {
+          font-size: 2rem;
+      }
+
+      .faq-answer {
+          display: none;
+          padding-top: 1.5rem;
+          border-top: 2px solid rgba(74, 144, 226, 0.1);
+          margin-top: 1.5rem;
+          color: var(--text-dark);
+      }
+
+      .faq-card.active .faq-answer {
+          display: block;
+          animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .contact-section {
+          text-align: center;
+          margin: 4rem 0;
+          padding: 3rem;
+          background: white;
+          border-radius: 20px;
+          box-shadow: var(--card-shadow);
+      }
+
+      .contact-section h2 {
+          background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          font-size: 2rem;
+      }
+
+      .contact-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+      }
+
+      .contact-option {
+          padding: 2rem;
+          background: var(--background-light);
+          border-radius: 20px;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+
+      .contact-option:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      }
+
+      .contact-option i {
+          color: var(--primary-color);
+          margin-bottom: 1rem;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (max-width: 768px) {
+          .container { padding: 1rem; }
+          .header h1 { font-size: 2.5rem; }
+          .faq-grid { grid-template-columns: 1fr; }
+          .quick-link { width: 100%; justify-content: center; }
+          .search-input { font-size: 1rem; padding: 1rem 1rem 1rem 3rem; }
+      }
+  </style>
+</head>
 <body>
-  <!-- Navbar will be dynamically loaded -->
   <div id="navbar"></div>
 
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar close">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
-    <nav>
-      <a href="./home.html">Home</a>
-      <a href="#" onclick="showFooter()">Create</a>
-      <a href="./join.html">Join</a>
-      <a href="./help.html">Help</a>
-      <a href="./team.html">Team</a>
-      <a href="./analytics.html">Analytics</a>
-      <button class="theme-switcher-sidebar" id="theme-switcher-sidebar" aria-label="Toggle theme">
-        <i class="fas fa-sun" aria-hidden="true"></i>
-        <i class="fas fa-moon" aria-hidden="true"></i>
-      </button>
-    </nav>
-  </div>
+    <div class="container">
 
-  <!-- Main Content -->
-  <main>
-    <section class="faq-container">
-      <h1>What is Votify?</h1>
-      <div class="faq">
-        <div class="faq-questions">
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>What is Votify?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>Is my vote anonymous on Votify?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>How do I create a poll?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>How do I join a poll?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>How many times can I vote in a poll?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>What happens if I refresh or close the browser?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>Are my poll responses stored?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>Can I see the results of the poll in real-time?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>How can I ensure the poll remains secure?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button class="faq-question" onclick="showAnswer(this)">
-            <span>Is there a limit to how many people can vote in a poll?</span>
-            <i class="fas fa-chevron-right"></i>
-          </button>
+        <header class="header">
+
+            <h1>How can we help you?</h1>
+            <p>Find answers to common questions about Votify</p>
+        </header>
+
+        <div class="quick-links">
+            <a href="#" class="quick-link">
+                <i class="fas fa-play-circle"></i>
+                Video Tutorials
+            </a>
+            <a href="#" class="quick-link">
+                <i class="fas fa-book"></i>
+                Documentation
+            </a>
+            <a href="#contact" class="quick-link">
+                <i class="fas fa-headset"></i>
+                Contact Support
+            </a>
         </div>
-        <div class="faq-answer">
-          <h2>Question</h2>
-          <p>Scrollable answer</p>
+
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search your question..." id="searchInput">
         </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- Footer will be dynamically loaded -->
-  <div id="footer"></div>
+        <div class="categories">
+            <button class="category active" data-category="all">All Questions</button>
+            <button class="category" data-category="getting-started">Getting Started</button>
+            <button class="category" data-category="voting">Voting</button>
+            <button class="category" data-category="technical">Technical</button>
+        </div>
 
-  <script src="/script.js"></script>
+        <div class="faq-grid" id="faqGrid"></div>
+
+        <section class="contact-section" id="contact">
+            <h2 class="gradient-text">Still need help?</h2>
+            <p>Our support team is available 24/7 to assist you</p>
+            <div class="contact-grid">
+                <div class="contact-option">
+                    <i class="fas fa-phone fa-2x"></i>
+                    <h3>Call Support</h3>
+                    <p>+1 (800) 123-4567</p>
+                </div>
+                <div class="contact-option">
+                    <i class="fas fa-envelope fa-2x"></i>
+                    <h3>Email Support</h3>
+                    <p>support@votify.com</p>
+                </div>
+                <div class="contact-option">
+                    <i class="fas fa-comments fa-2x"></i>
+                    <h3>Live Chat</h3>
+                    <p>Start a conversation</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer"></div>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="/socket-client.js"></script>
+    <script src="/auth.js"></script>
+    <script src="/script.js"></script>
+
+    <script>
+        const faqData = [
+            {
+                id: 1,
+                category: 'getting-started',
+                question: 'What is Votify?',
+                answer: 'Votify is a platform for creating and participating in real-time polls. It\'s designed to be simple, secure, and anonymous.',
+                icon: '🎯'
+            },
+            {
+                id: 2,
+                category: 'voting',
+                question: 'Is my vote anonymous on Votify?',
+                answer: 'Yes, your vote is completely anonymous. We do not store any personal information linked to your vote.',
+                icon: '🔒'
+            }
+        ];
+
+        function populateFAQGrid(category = 'all') {
+            const grid = document.getElementById('faqGrid');
+            grid.innerHTML = '';
+            const filteredFAQs = category === 'all' ? faqData : faqData.filter(faq => faq.category === category);
+            filteredFAQs.forEach(faq => {
+                const card = document.createElement('div');
+                card.className = 'faq-card';
+                card.innerHTML = `
+                    <div class="faq-question">
+                        <span class="faq-icon">${faq.icon}</span>
+                        <h3>${faq.question}</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${faq.answer}</p>
+                        <div class="feedback">
+                            <button onclick="submitFeedback(${faq.id}, true)">
+                                <i class="fas fa-thumbs-up"></i> Yes
+                            </button>
+                            <button onclick="submitFeedback(${faq.id}, false)">
+                                <i class="fas fa-thumbs-down"></i> No
+                            </button>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => toggleAnswer(card));
+                grid.appendChild(card);
+            });
+        }
+
+        function toggleAnswer(card) {
+            const wasActive = card.classList.contains('active');
+            document.querySelectorAll('.faq-card').forEach(c => {
+                c.classList.remove('active');
+                c.style.transform = '';
+            });
+            if (!wasActive) {
+                card.classList.add('active');
+                card.style.transform = 'scale(1.02) translateY(-5px)';
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.faq-card').forEach(card => {
+                const question = card.querySelector('h3').textContent.toLowerCase();
+                const answer = card.querySelector('.faq-answer p').textContent.toLowerCase();
+                const display = question.includes(searchTerm) || answer.includes(searchTerm);
+                card.style.display = display ? 'block' : 'none';
+                if (display) {
+                    card.style.animation = 'fadeIn 0.5s ease-out';
+                }
+            });
+        });
+
+        document.querySelectorAll('.category').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category').forEach(b => {
+                    b.classList.remove('active');
+                    b.style.transform = '';
+                });
+                btn.classList.add('active');
+                btn.style.transform = 'scale(1.05)';
+                populateFAQGrid(btn.dataset.category);
+            });
+        });
+
+        function submitFeedback(faqId, isHelpful) {
+            const feedbackButtons = event.target.closest('.feedback');
+            feedbackButtons.innerHTML = '<p class="gradient-text">Thank you for your feedback! 🎉</p>';
+            setTimeout(() => {
+                feedbackButtons.style.opacity = '0.7';
+            }, 2000);
+            event.stopPropagation();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateFAQGrid();
+            
+            const cards = document.querySelectorAll('.faq-card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s`;
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.faq-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+                if (isVisible) {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.opacity = '1';
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.contact-option').forEach(option => {
+            observer.observe(option);
+        });
+    </script>
 </body>
-
 </html>
